@@ -1,6 +1,6 @@
 export default function AppTitle(props){
 
-const {title , subtitle}=props;
+const {title ="Box Office APP", subtitle ="Are You Looking For Any Movie Or Actor/Actress ?"}=props;
 
 return <div>
 
