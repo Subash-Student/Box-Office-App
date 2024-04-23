@@ -1,15 +1,16 @@
+const BASE_url = 'https://api.tvmaze.com';
 
+const apiGet = async(REM_URL)=>{
 
-const apiGet = async(searchStr,searchOption)=>{
-
-  
-    const url = `https://api.tvmaze.com/search/${searchOption}?q=${searchStr}`;
+    const url = `${BASE_url}${REM_URL}`;
     const response = await fetch(url);
     const data = await response.json();
 
     return data;
 }
 
-export const showdata = (searchStr,searchOption)=> apiGet(searchStr,searchOption);
+export const showdata = (searchStr)=> apiGet(`/search/shows?q=${searchStr}`);
 
-export const actordata = (searchStr,searchOption)=> apiGet(searchStr,searchOption);
+export const actordata = (searchStr)=> apiGet(`/search/people?q=${searchStr}`);
+
+export const getDataById = (showId)=> apiGet (`/shows/${showId}`)

@@ -30,10 +30,10 @@ ev.preventDefault();
 try {
     setApiError(null);
     if(searchOption === "shows"){
-        const results = await showdata(SearchStr,searchOption);
+        const results = await showdata(SearchStr);
         setApiData(results);
     }else{
-        const results = await actordata(SearchStr,searchOption);
+        const results = await actordata(SearchStr);
         setApiData(results);
     }
     
