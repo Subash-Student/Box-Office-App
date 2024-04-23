@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { actordata, showdata } from "../api/tvmaze";
 import Searchform from "../components/Searchform";
+import Show from "../components/Show/Show";
+import Actor from "../components/Actor/Actor";
 
 
 const Home =()=>{
 
     const [SearchStr , SetSearchStr] =useState("");
-     const [apiData , setApiData] = useState([]);
+     const [apiData , setApiData] = useState(null);
      const [apiError , setApiError] = useState();
      const [searchOption , setSearchOption] = useState("shows");
 
@@ -18,8 +20,8 @@ const searchOptionHandler =(ev)=>{
 
     setSearchOption(ev.target.value)
 }
-console.log(searchOption);
-// console.log(apiData[0].show);
+
+
 
 
 const submitHandler =async(ev)=>{
@@ -48,18 +50,14 @@ const renderApiData =()=>{
         return <div>Error Occured : {apiError.message}</div>
     }
   
-    if(apiData){
-       return apiData[0].show ? apiData.map((data) => (
-            <div key={data.show.id}>
-                {data.show.name}
-            </div>
-        )) :
-        apiData.map((data) => (
-            <div key={data.people.id}>
-                {data.people.name}
-            </div>
-        ))
+if(apiData?.length === 0){
+      return <div>No Result Found</div>
+}
+
+    if(apiData){  
+       return apiData[0].show ?  <Show apiData={apiData}/> : <Actor apiData={apiData}/>
     }
+        
     
     return null;
 
