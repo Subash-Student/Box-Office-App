@@ -3,8 +3,20 @@ import Home from "./Pages/Home";
 import Starred from "./Pages/Starred";
 import Mainlayout from "./components/Mainlayout"
 import ShowPage from "./Pages/ShowPage";
+import {
+  // useQuery,
+  // useMutation,
+  // useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+
+const queryClient = new QueryClient();
+
 function App() {
   return (
+    <QueryClientProvider client={queryClient}>
     <div >
     <BrowserRouter>
     <Routes>
@@ -31,7 +43,9 @@ function App() {
     </Routes>
   </BrowserRouter>
     </div>
+    </QueryClientProvider>
   );
+  
 }
 
 export default App;
