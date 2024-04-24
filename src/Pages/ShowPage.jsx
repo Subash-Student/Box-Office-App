@@ -3,29 +3,38 @@ import { useParams } from "react-router-dom";
 import { getDataById } from "../api/tvmaze";
 const ShowPage =()=>{
 
-    const{ showId }= useParams();
-    const [showData , setShowData] = useState(null);
-    const [showError , setShowError] = useState(null);
+  const{ showId }= useParams();
+    
+const useFetchShowData=(showId)=>{
 
-    useEffect(() => {
+  
+  const [showData , setShowData] = useState(null);
+  const [showError , setShowError] = useState(null);
 
-        async function fetchData() {
-          try {
-            const data = await getDataById(showId);
-            setShowData(data);
-            console.log(showData);
-          } catch (error) {
-            setShowError(error);
-          }
+  useEffect(() => {
 
-        }
+    async function fetchData() {
+      try {
+        const data = await getDataById(showId);
+        setShowData(data);
+        console.log(showData);
+      } catch (error) {
+        setShowError(error);
+      }
 
-        fetchData();
-       
-      }, [showId]);
+    }
+
+    fetchData();
+   
+  }, [showId]);
+
+  return ({showData,showError});
+}
+    
+const {showData,showError} = useFetchShowData(showId);
 
       if(showError){
-        return <h1>Failed to Fetch Data From {showData.name}</h1>
+        return <h1>Failed To Fetch Data</h1>
     }
     if(showData){
         return <h1>Data Loading From{showData.name}</h1>
