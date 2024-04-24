@@ -3,14 +3,12 @@ import { actordata, showdata } from "../api/tvmaze";
 import Searchform from "../components/Searchform";
 import Show from "../components/Show/Show";
 import Actor from "../components/Actor/Actor";
-
+import {useQuery} from '@tanstack/react-query'
 
 const Home =()=>{
 
     const [SearchStr , SetSearchStr] =useState("");
-     const [apiData , setApiData] = useState(null);
-     const [apiError , setApiError] = useState();
-     const [searchOption , setSearchOption] = useState("shows");
+    const [searchOption , setSearchOption] = useState("shows");
 
 const searchHandler =(e)=>{
   SetSearchStr(e.target.value);
@@ -21,27 +19,21 @@ const searchOptionHandler =(ev)=>{
     setSearchOption(ev.target.value)
 }
 
+const [filter, setFilter] =useState(null)
 
 
+const { data:apiData  , error:apiError } = useQuery({
+    queryKey: ['search', filter],
+    queryFn: () => filter.searchOption === "shows"  ? showdata(filter.SearchStr) : actordata(filter.SearchStr),
+   
+    enabled: !!filter
+  })
 
+  
 const submitHandler =async(ev)=>{
 ev.preventDefault();
 
-try {
-    setApiError(null);
-    if(searchOption === "shows"){
-        const results = await showdata(SearchStr);
-        setApiData(results);
-    }else{
-        const results = await actordata(SearchStr);
-        setApiData(results);
-    }
-    
-    
-} catch (error) {
-    setApiError(error);
-}
-
+setFilter({SearchStr,searchOption});
 
 }
 

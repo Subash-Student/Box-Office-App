@@ -4,7 +4,7 @@ const Searchform =({submitHandler,searchOption,searchHandler,SearchStr,renderApi
     return <div>
     <form onSubmit={submitHandler}>
         <input type="text" value={SearchStr}  onChange={searchHandler}/>
-        <button type="submit">Search</button>
+        
 
     <label>
       <input type="radio" name="search-option" value="shows" checked ={searchOption === "shows"} onChange={searchOptionHandler} />Show
@@ -14,7 +14,7 @@ const Searchform =({submitHandler,searchOption,searchHandler,SearchStr,renderApi
       <input type="radio" name="search-option" value="people" checked ={searchOption === "people"} onChange={searchOptionHandler} />Actor
     </label>
 
-    
+    <button type="submit">Search</button>
 
 
 
