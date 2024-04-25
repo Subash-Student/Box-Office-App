@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import { getDataById } from "../api/tvmaze";
 import {useQuery} from '@tanstack/react-query'
  import ShowData from "../components/Show/ShowData";
@@ -22,8 +22,12 @@ const  {data :showData, error:showError}= useQuery({
         return <h1>Failed To Fetch Data</h1>
     }
     if(showData){
-    
+
+     
      return  <><div>
+
+      <Link to ="/">Go To Home Page...</Link>
+
        <ShowData
          name={showData.name}
          image={showData.image.original}
@@ -42,7 +46,7 @@ const  {data :showData, error:showError}= useQuery({
        </div>
 
        <div>
-        <h1>Cast</h1>
+        <h1></h1>
         <Cast cast = {!!showData && showData._embedded.cast} />
        </div>
        </>
