@@ -13,4 +13,4 @@ export const showdata = (searchStr)=> apiGet(`/search/shows?q=${searchStr}`);
 
 export const actordata = (searchStr)=> apiGet(`/search/people?q=${searchStr}`);
 
-export const getDataById = (showId)=> apiGet (`/shows/${showId}`)
+export const getDataById = (showId)=> apiGet (`/shows/${showId}?embed[]=seasons&embed[]=cast`)
