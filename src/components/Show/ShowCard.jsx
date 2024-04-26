@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 
-const ShowCard = ({name,image,summary,id,starMeClick})=>{
+const ShowCard = ({name,image,summary,id,starMeClick,isStarred})=>{
 
    
 
@@ -25,7 +25,7 @@ const ShowCard = ({name,image,summary,id,starMeClick})=>{
         <div>
            
             <Link to={`/show/${id}`}>Show More...</Link>
-            <button type="button" onClick={()=> starMeClick(id)}>Star Me</button>
+            <button type="button" onClick={()=> starMeClick(id)}>{isStarred? "Un Star Me" : "Star Me"}</button>
         </div>
         
     </div>

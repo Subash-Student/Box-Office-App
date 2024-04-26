@@ -1,7 +1,10 @@
+import { useStarredShow } from "../lib/useStarredhow";
+
 const Starred =()=>{
 
-return <h1>Starred Page</h1>
+const [starred] = useStarredShow()
 
+return <h1>Starred show count is {starred.length}</h1>
 }
 
 export default Starred;
