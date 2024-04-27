@@ -3,6 +3,7 @@ import Show from "../components/Show/Show";
 import {useQuery} from '@tanstack/react-query';
 
  import { useStarredShow } from "../lib/useStarredhow";
+import { TextCenter } from "../components/commonStyle/TextCenter";
 
 const Starred =()=>{
 
@@ -17,12 +18,19 @@ const { data:starredShows  , error:starredShowsError } = useQuery({
    refetchOnWindowFocus :false,
     
   })
-console.log({starredShows})
-if(starredShows){
+
+if(starredShows>length > 0 ){
   return <Show apiData = {starredShows}/>
 }
 
-return <div>Data is Loading....</div>
+if(starredShows?.length === 0){
+return <TextCenter>No Shows Are Starred </TextCenter>
+}
+
+if(starredShowsError){
+  return <TextCenter>{starredShowsError.message}</TextCenter>
+}
+return <TextCenter>Data is Loading....</TextCenter>
 }
 
 export default Starred;

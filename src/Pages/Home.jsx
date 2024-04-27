@@ -5,7 +5,8 @@ import Show from "../components/Show/Show";
 import Actor from "../components/Actor/Actor";
 import {useQuery} from '@tanstack/react-query'
 import { useSearchStr} from "../lib/searchInput"
-import styled from 'styled-components'
+import { TextCenter } from "../components/commonStyle/TextCenter";
+
 
 
 
@@ -44,11 +45,11 @@ setFilter({SearchStr,searchOption});
 
 const renderApiData =()=>{
     if(apiError){
-        return <div>Error Occured : {apiError.message}</div>
+        return <TextCenter>Error Occured : {apiError.message}</TextCenter>
     }
   
 if(apiData?.length === 0){
-      return <div>No Result Found</div>
+      return <TextCenter>No Result Found</TextCenter>
 }
 
     if(apiData){  
