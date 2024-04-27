@@ -4,12 +4,16 @@ import Starred from "./Pages/Starred";
 import Mainlayout from "./components/Mainlayout"
 import ShowPage from "./Pages/ShowPage";
 import { QueryClient,QueryClientProvider} from '@tanstack/react-query'
+import { GlobalTheme } from "./theme";
+
+
 
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
+    <GlobalTheme>
     <QueryClientProvider client={queryClient}>
     <div >
     <BrowserRouter>
@@ -21,23 +25,11 @@ function App() {
 
      <Route path ="/show/:showId" element={<ShowPage />} />
       <Route path="*" element={<div>Not Found</div>} />
-      {/* <Route path="/" element={<App />}>
-        <Route index element={<Home />} />
-        <Route path="teams" element={<Teams />}>
-          <Route path=":teamId" element={<Team />} />
-          <Route path="new" element={<NewTeamForm />} />
-          <Route index element={<LeagueStandings />} />
-        </Route>
-      </Route>
-      <Route element={<PageLayout />}>
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/tos" element={<Tos />} />
-      </Route>
-      <Route path="contact-us" element={<Contact />} /> */}
     </Routes>
   </BrowserRouter>
     </div>
     </QueryClientProvider>
+    </GlobalTheme>
   );
   
 }

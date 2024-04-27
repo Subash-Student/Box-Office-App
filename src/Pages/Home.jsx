@@ -5,6 +5,9 @@ import Show from "../components/Show/Show";
 import Actor from "../components/Actor/Actor";
 import {useQuery} from '@tanstack/react-query'
 import { useSearchStr} from "../lib/searchInput"
+import styled from 'styled-components'
+
+
 
 const Home =()=>{
 
@@ -58,14 +61,18 @@ if(apiData?.length === 0){
 }
 
 
-return <Searchform 
-submitHandler ={submitHandler} 
-searchOption={searchOption}
-searchHandler={searchHandler}
-SearchStr={SearchStr} 
-renderApiData={renderApiData}
-searchOptionHandler={searchOptionHandler}/>
-
+return (
+<div>
+<Searchform
+    submitHandler={submitHandler}
+    searchOption={searchOption}
+    searchHandler={searchHandler}
+    SearchStr={SearchStr}
+    renderApiData={renderApiData}
+    searchOptionHandler={searchOptionHandler} />
+    </div>
+)
 }
+ 
 
 export default Home;
