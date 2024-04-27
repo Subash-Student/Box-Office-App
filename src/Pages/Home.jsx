@@ -4,14 +4,16 @@ import Searchform from "../components/Searchform";
 import Show from "../components/Show/Show";
 import Actor from "../components/Actor/Actor";
 import {useQuery} from '@tanstack/react-query'
+import { useSearchStr} from "../lib/searchInput"
 
 const Home =()=>{
 
-    const [SearchStr , SetSearchStr] =useState("");
+    const [SearchStr , SetSearchStr] =useSearchStr();
     const [searchOption , setSearchOption] = useState("shows");
 
 const searchHandler =(e)=>{
   SetSearchStr(e.target.value);
+  
 
 }
 const searchOptionHandler =(ev)=>{
