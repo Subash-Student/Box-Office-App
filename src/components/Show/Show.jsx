@@ -13,7 +13,7 @@ const Show = ({apiData})=>{
    
     const starMeClick = showId =>{
 
-        console.log(showId)
+    
         const isStarred = starredShow.includes(showId );
 
         if(isStarred){
@@ -23,7 +23,7 @@ const Show = ({apiData})=>{
         }
        
     }
-    console.log({starredShow});
+    
     return <FlexGrid>
         {
            apiData?.map(data =>(

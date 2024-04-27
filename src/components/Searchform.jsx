@@ -6,7 +6,7 @@ const Searchform =({submitHandler,searchOption,searchHandler,SearchStr,renderApi
     return <div>
     <form onSubmit={submitHandler}>
         <SearchInput type="text"
-        placeholder='Search For Something...' 
+        placeholder='Search here' 
         value={SearchStr} 
          onChange={searchHandler}/>
         

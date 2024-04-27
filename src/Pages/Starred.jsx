@@ -19,7 +19,7 @@ const { data:starredShows  , error:starredShowsError } = useQuery({
     
   })
 
-if(starredShows>length > 0 ){
+if(starredShows?.length > 0 ){
   return <Show apiData = {starredShows}/>
 }
 
