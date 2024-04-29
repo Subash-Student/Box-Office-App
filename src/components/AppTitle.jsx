@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export default function AppTitle(props){
 
-const {title ="Box Office APP", subtitle ="Are You Looking For Any Movie Or Actor/Actress ?"}=props;
+const {title ="Cini-Base", subtitle ="Are You Looking For Any Movie Or Actor/Actress ?"}=props;
 
 return <TitleWrapper>
 
